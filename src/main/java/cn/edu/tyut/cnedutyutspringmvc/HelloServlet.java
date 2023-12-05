@@ -1,4 +1,4 @@
-package cn.edu.tyut.cnEduTyutSpringMvc;
+package cn.edu.tyut.cnedutyutspringmvc;
 
 import java.io.*;
 

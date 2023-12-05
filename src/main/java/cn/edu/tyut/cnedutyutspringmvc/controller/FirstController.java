@@ -1,4 +1,4 @@
-package cn.edu.tyut.cnEduTyutSpringMvc.controller;
+package cn.edu.tyut.cnedutyutspringmvc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
