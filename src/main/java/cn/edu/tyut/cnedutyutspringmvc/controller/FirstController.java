@@ -1,7 +1,7 @@
 package cn.edu.tyut.cnedutyutspringmvc.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @Author 羊羊
@@ -13,7 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class FirstController {
-    @RequestMapping("/firstMapping")
+    /**
+     * RequestMapping注解为Handler（处理器）提供必要的映射信息，将请求的URL映射到具体的处理方法
+     * GetMapping是基于请求方式的URL路径映射
+     * @return 页面
+     */
+    @GetMapping("/firstMapping")
     public String sayHello()  {
         System.out.println("访问到FirstController");
         return "success";

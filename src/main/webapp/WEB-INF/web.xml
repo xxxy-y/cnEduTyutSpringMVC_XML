@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+         https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
     <servlet>
         <servlet-name>DispatcherServlet</servlet-name>
@@ -9,15 +10,19 @@
             org.springframework.web.servlet.DispatcherServlet
         </servlet-class>
         <!--        指定Spring的应用上下文配置文件, 用于定义Spring容器中的Bean定义、依赖关系和其他配置信息-->
+        <!--        指定DispatcherServlet初始化参数，参数名为contextConfigLocation，参数值为指定路径下的文件spring-mvc.xml，用于读取SpringMVC的配置文件-->
+        <!--        DispatcherServlet初始化时会读取spring-mvc.xml文件中的配置信息并完成初始化-->
+        <!--        如果web.xml没有通过<init-param>元素指定DispatcherServlet初始化时要加载的文件，则应用程序会去WEB-INF文件夹下寻找并加载名为[servlet-name]-servlet.xml配置文件-->
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring-mvc.xml</param-value>
         </init-param>
-        <!--       项目启动时会立即加载DispatcherServlet, DispatcherServlet初始化时会加载classpath路径下的spring-mvc.xml配置文件-->
+        <!--        用于指定DispatcherServlet是否在启动时加载，如果其中的值为0或者正整数，表示在项目启动时就加载并初始化这个servlet，值越小，优先级越高，越先被加载-->
+        <!--        如果为负数或者没有设置，则servlet会在被请求时加载并初始化-->
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <!--        在项目运行时, Spring MVC的前端控制器会拦截所有的请求URL, 并交由DispatcherServlet处理-->
+        <!--        在项目运行时, Spring MVC的前端控制器会拦截所有的请求URL, 并交由名称为DispatcherServlet的servlet处理-->
         <servlet-name>DispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
